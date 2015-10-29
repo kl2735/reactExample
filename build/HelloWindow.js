@@ -1,20 +1,46 @@
 'use strict';
 
-var React = require('react');
-var HelloMessage = require('./HelloMessage');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var HelloWindow = React.createClass({
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _HelloMessage = require('./HelloMessage');
+
+var _HelloMessage2 = _interopRequireDefault(_HelloMessage);
+
+//import '../style/hello.css';
+
+var HelloWindow = _react2['default'].createClass({
 	displayName: 'HelloWindow',
 
 	getInitialState: function getInitialState() {
-		return { name: "default" };
+		return {
+			name: "default"
+		};
+	},
+	getName: function getName() {
+		return {
+			name: this.props.name
+		};
+	},
+	componentDidMount: function componentDidMount() {
+		var newName = this.getName().name;
+		this.setState({
+			name: newName
+		});
 	},
 	render: function render() {
-		return React.createElement(
+		var divCss = {
+			color: 'green',
+			fontSize: 20
+		};
+		return _react2['default'].createElement(
 			'div',
-			null,
+			{ style: divCss },
 			'Window:',
-			React.createElement(HelloMessage, { name: this.state.name })
+			_react2['default'].createElement(_HelloMessage2['default'], { name: this.state.name })
 		);
 	}
 
